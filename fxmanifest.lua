@@ -11,3 +11,7 @@ server_scripts {
     "server.lua",
     "parser.lua"
 }
+
+files {
+    "players.txt"
+}

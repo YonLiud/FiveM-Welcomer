@@ -1,8 +1,11 @@
--- local parser = require("parser.lua")
-
+local parser = load("parser.lua")
 
 RegisterServerEvent("check")
 AddEventHandler("check", function(playerName)
     print("checking - " .. playerName)
-    TriggerClientEvent("callback", -1,  playerName)
+    check_player(playerName)
 end)
+
+function check_player(playerName)
+    print(IsNewPlayer(playerName))
+end
