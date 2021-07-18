@@ -7,8 +7,7 @@ version 'UNRELEASED'
 
 client_script "client.lua"
 
-
 server_scripts {
     "server.lua",
-    -- "parser.lua"
+    "parser.lua"
 }

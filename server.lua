@@ -2,6 +2,7 @@
 
 
 RegisterServerEvent("check")
-AddEventHandler("check", function()
-    TriggerClientEvent("callback", 1)
+AddEventHandler("check", function(playerName)
+    print("checking - " .. playerName)
+    TriggerClientEvent("callback", -1,  playerName)
 end)

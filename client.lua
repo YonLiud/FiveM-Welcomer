@@ -2,24 +2,24 @@ local color = {
     r=255,
     b=255,
     g=255,
-    a=255
+    a=0
 }
 
-RegisterCommand('welcomer', function(source, args)
-    TriggerServerEvent('check')
-    Citizen.Trace("sent Check")
+RegisterCommand('welcomer', function(source)
+    TriggerServerEvent('check', GetPlayerName(PlayerId()))
+    Citizen.Trace("\nRequest " .. GetPlayerName(PlayerId()) .. " - ")
 end, false)
 
-RegisterNetEvent("callback")
-AddEventHandler("callback", function()
-    Citizen.Trace("callback")
+RegisterNetEvent("callback", function(playerName)
+    Citizen.Trace("Callback " .. playerName)
 end)
 
 
 function ifNewPlayer()
     Citizen.CreateThread(function()
         local start = os.time()
-        repeat until os.time() > start + 10 do
+        --repeat until os.time() > start + 10 do
+        while true do
             -- The Text
             Citizen.Wait(5)
             SetTextFont(0)  -- 0 -> 4
