@@ -25,4 +25,4 @@ To customize the welcome message, edit the file `/welcomer/client.lua` to your n
 
 LICENSE
 -------
-[MIT License](https://github.com/YonLiud/FiveM-Welcomer/blob/master/LICENSE.md)
+[MIT License](https://github.com/YonLiud/FiveM-Welcomer/blob/master/LICENSE.MD)
