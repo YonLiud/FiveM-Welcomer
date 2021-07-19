@@ -69,7 +69,7 @@ function DisplayText(text,X, Y, font, size)
         yellowr,yellowg,yellowb = 255,180,0
         redr,redg,redb = 255,0,0
         local flag = true
-        -- Citizen.SetTimeout(10000, function() flag=false end)
+        Citizen.SetTimeout(10000, function() flag=false end)
         repeat
             Citizen.Wait(1)
             SetTextFont(font or 0)
