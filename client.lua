@@ -2,7 +2,7 @@ local color = {
     r=255,
     b=255,
     g=255,
-    a=0
+    a=1
 }
 
 RegisterCommand('welcomer', function(source)
@@ -10,8 +10,8 @@ RegisterCommand('welcomer', function(source)
     Citizen.Trace("\nRequest " .. GetPlayerName(PlayerId()) .. " - ")
 end, false)
 
-RegisterNetEvent("callback", function(playerName)
-    Citizen.Trace("Callback " .. playerName)
+RegisterNetEvent("callback", function(isNew)
+    Citizen.Trace("Callback " .. tostring(isNew))
 end)
 
 
