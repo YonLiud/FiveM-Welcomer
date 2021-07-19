@@ -14,7 +14,7 @@ end, false)
 -- On Player spawn
 AddEventHandler("playerSpawned", function(spawn)
     on_connect(player)
-    TriggerServerEvent("connection1")
+
 end) 
 
 -- Callback from the server
@@ -24,27 +24,38 @@ end)
 
 -- Execute on player connect
 function on_connect(source)
+    DisplayText("Lorem Ipsum")
     TriggerServerEvent('check', GetPlayerName(PlayerId()))
     Citizen.Trace("\nRequest " .. GetPlayerName(PlayerId()) .. " - ")
 end
 
-function ifNewPlayer()
+
+function DisplayText(text)
     Citizen.CreateThread(function()
-        local start = os.time()
-        --repeat until os.time() > start + 10 do
-        while true do
-            -- The Text
-            Citizen.Wait(5)
-            SetTextFont(0)  -- 0 -> 4
-            SetTextScale(0.4, 0.4)
-            SetTextColour(color.r, color.g, color.b, color.a)
-            setTextEntry("STRING")
-            AddTextComponentString("Welcome")
-            DrawText(0.5, 0.5)
-
-            -- The Rectangle
-            DrawRect(150,100,3.2,0.05,color.r,color.g,color.b,color.a)
-
-        end
+        greenr,greeng,greenb = 0,255,0
+        yellowr,yellowg,yellowb = 255,180,0
+        redr,redg,redb = 255,0,0
+        local flag = true
+        Citizen.SetTimeout(10000, function() flag=false end)
+        repeat
+            Citizen.Wait(1)
+            SetTextFont(0)
+            SetTextProportional(1)
+            SetTextScale(0.0, 0.3)
+            SetTextColour(128, 128, 200, 255)
+            SetTextDropshadow(0, 0, 0, 0, 255)
+            SetTextEdge(1, 0, 0, 0, 255)
+            SetTextDropShadow()
+            SetTextOutline()
+            SetTextEntry("STRING")
+            AddTextComponentString(text)
+            DrawText(0.405, 0.005)
+        until flag == false
     end)
+end
+
+
+
+function math.round(num, numDecimalPlaces)
+	return string.format("%.0f", num)
 end
