@@ -23,6 +23,13 @@ CUSTOMIZATION
 
 To customize the welcome message, edit the file `/welcomer/client.lua` to your needs, there will be comments explaining everything you should know.
 
+CONTRIBUTORS
+------------
+
+ * [@Yonlud](https://github.com/YonLiud)         - Original author
+ * [Github Copilot](https://copilot.github.com/) - Code & Architecture engineer
+ * [@razham05](https://github.com/razham05)      - Moral Support
+
 LICENSE
 -------
 [MIT License](https://github.com/YonLiud/FiveM-Welcomer/blob/master/LICENSE.MD)
