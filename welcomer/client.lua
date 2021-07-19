@@ -23,8 +23,21 @@ AddEventHandler('onResourceStart', function(resourceName)
       return
     end
     Citizen.Trace('The resource ' .. resourceName .. ' has been started.')
-    -- MOVE ME ⬇️
-    
+  end)
+  
+  
+
+-- Callback from the server
+RegisterNetEvent("callback", function(isNew)
+    Citizen.Trace("Callback " .. tostring(isNew))
+    if (isNew) then
+        newPlayer()
+    else
+        returningPlayer()
+end)
+
+-- If New Player
+function newPlayer()
     DisplayText("Welcome to [CHANGE ME]", 0.6, 0.2, 1, 1.2)
     DisplayText("To open the vMenu Panel, Click F1", 0.6, 0.27)
     DisplayText("To open the Custom Vehicles Panel, Click F3", 0.6, 0.31)
@@ -34,25 +47,12 @@ AddEventHandler('onResourceStart', function(resourceName)
     DisplayText("To report someone, use /report ID Reason", 0.6, 0.45)
     
 
-    -- MOVE ME ⬆️
-  end)
-  
-  
-
--- Callback from the server
-RegisterNetEvent("callback", function(isNew)
-    Citizen.Trace("Callback " .. tostring(isNew))
-end)
-
--- If New Player
-function newPlayer()
-    DisplayText("Welcome to [CHANGE ME]", 0.6, 0.2)
 end
 
 
 -- If Returning Player
 function returningPlayer()
-    DisplayText("Welcome Back", 0.405, 0.2)
+    DisplayText("Welcome Back", 0.6, 0.2, 1, 1.2)
 end
 
 
