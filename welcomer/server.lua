@@ -1,15 +1,15 @@
 local parser = load("parser.lua")
 
 RegisterServerEvent("check")
-AddEventHandler("check", function(playerName)
-    check_player(playerName)
+AddEventHandler("check", function(playerName, PlayerId)
+    check_player(playerName, PlayerId)
 end)
 
 
-function check_player(playerName)
+function check_player(playerName, PlayerId)
     local newPlayer = false
     if IsNewPlayer(playerName) then
         newPlayer = true
     end
-    TriggerClientEvent("callback", -1,  newPlayer)
+    TriggerClientEvent("callback", PlayerId,  newPlayer)
 end
