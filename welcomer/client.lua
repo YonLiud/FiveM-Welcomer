@@ -34,6 +34,7 @@ RegisterNetEvent("callback", function(isNew)
         newPlayer()
     else
         returningPlayer()
+    end
 end)
 
 -- If New Player
