@@ -5,15 +5,28 @@ local color = {
     a=1
 }
 
+-- For Debugging
 RegisterCommand('welcomer', function(source)
-    TriggerServerEvent('check', GetPlayerName(PlayerId()))
-    Citizen.Trace("\nRequest " .. GetPlayerName(PlayerId()) .. " - ")
+    on_connect(source) --TODO Remove this on release
 end, false)
 
+
+-- On Player spawn
+AddEventHandler("playerSpawned", function(spawn)
+    on_connect(player)
+    TriggerServerEvent("connection1")
+end) 
+
+-- Callback from the server
 RegisterNetEvent("callback", function(isNew)
     Citizen.Trace("Callback " .. tostring(isNew))
 end)
 
+-- Execute on player connect
+function on_connect(source)
+    TriggerServerEvent('check', GetPlayerName(PlayerId()))
+    Citizen.Trace("\nRequest " .. GetPlayerName(PlayerId()) .. " - ")
+end
 
 function ifNewPlayer()
     Citizen.CreateThread(function()
