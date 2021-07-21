@@ -15,13 +15,14 @@ AddEventHandler('onResourceStart', function(resourceName)
     if (GetCurrentResourceName() ~= resourceName) then
       return
     end
-    Citizen.Trace('The resource ' .. resourceName .. ' has been started.')
+    Citizen.Trace('The resource ' .. resourceName .. ' has been started.\n')
+
   end)
   
   
 -- Callback from the server
 RegisterNetEvent("callback", function(isNew)
-    Citizen.Trace("Callback " .. tostring(isNew))
+    Citizen.Trace("Callback " .. tostring(isNew) .. "\n")
     if (isNew) then
         newPlayer()
     else
@@ -48,35 +49,62 @@ end
 -- Execute on player connect
 function on_connect(source)
     TriggerServerEvent('check', GetPlayerName(PlayerId()), GetPlayerServerId(PlayerId()) )
-    Citizen.Trace("\nRequest " .. GetPlayerName(PlayerId()) .. " - " .. GetPlayerServerId(PlayerId()) .. " - ")
+    Citizen.Trace("\nRequest " .. GetPlayerName(PlayerId()) .. " - " .. GetPlayerServerId(PlayerId()) .. "\n")
 end
 
 --! DO NOT CHANGE THIS ⬇️
 
 function DisplayText(text,X, Y, font, size)
     Citizen.CreateThread(function()
-        local flag = true
-        Citizen.SetTimeout(10000 --[[Milliseconds until disappears]], function() flag=false end)
-        
+        local opacity = 255
+        local shown = true
+        Citizen.SetTimeout(10000 --[[Milliseconds until disappears]], function() shown = false end)
+        local shownFade = true
         repeat
             Citizen.Wait(1)
         --! DO NOT CHANGE THIS ⬆️
             SetTextFont(font or 0)
-            SetTextProportional(1)
+            SetTextProportional(0.5)
             SetTextScale(size or 0.6,size or 0.6)
-            SetTextColour(255, 102, 255, 255)
-            SetTextDropshadow(0, 0, 0, 0, 255)
-            SetTextEdge(4, 255, 255, 255, 255)
+            SetTextColour(255, 102, 255, opacity)
+            SetTextDropshadow(0, 0, 0, 0, opacity)
+            SetTextEdge(4, 255, 255, 255, opacity)
             SetTextDropShadow()
             SetTextOutline()
         --! DO NOT CHANGE THIS ⬇️
             SetTextEntry("STRING")
             AddTextComponentString(text)
             DrawText(X, Y) -- X, Y 
-        until flag == false
+        until shown == false
+        --TODO Add Fade out effect
+        -- Citizen.SetTimeout(10000 --[[Milliseconds until disappears]], function() shownFade = false end)
+        -- repeat
+        --     opacity = opacity - 25.5
+        --     Citizen.Wait(1)
+        --     --! DO NOT CHANGE THIS ⬆️
+        --         SetTextFont(font or 0)
+        --         SetTextProportional(0.5)
+        --         SetTextScale(size or 0.6,size or 0.6)
+        --         SetTextColour(255, 102, 255, opacity)
+        --         SetTextDropshadow(0, 0, 0, 0, opacity)
+        --         SetTextEdge(4, 255, 255, 255, opacity)
+        --         SetTextDropShadow()
+        --         SetTextOutline()
+        --     --! DO NOT CHANGE THIS ⬇️
+        --         SetTextEntry("STRING")
+        --         AddTextComponentString(text)
+        --         DrawText(X, Y) -- X, Y 
+        -- until shownFade == false
+        -- opacity = 255
     end)
 end
 
 function math.round(num, numDecimalPlaces)
 	return string.format("%.0f", num)
+end
+
+function changeBool(bool)
+    if (bool) then
+        bool = false
+    end
 end
