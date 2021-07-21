@@ -8,6 +8,7 @@ version 'Post Release 0.1'
 client_script "client.lua"
 
 server_scripts {
-    "server.lua",
-    "parser.lua"
+    "parser.lua",
+    "server.lua"
+    
 }

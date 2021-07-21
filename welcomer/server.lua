@@ -1,5 +1,3 @@
-local parser = load("parser.lua")
-
 RegisterServerEvent("check")
 AddEventHandler("check", function(playerName, PlayerId)
     check_player(playerName, PlayerId)
