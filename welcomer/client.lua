@@ -47,8 +47,8 @@ end
 
 -- Execute on player connect
 function on_connect(source)
-    TriggerServerEvent('check', GetPlayerName(PlayerId()), PlayerId())
-    Citizen.Trace("\nRequest " .. GetPlayerName(PlayerId()) .. " - " .. PlayerId() .. " - ")
+    TriggerServerEvent('check', GetPlayerName(PlayerId()), GetPlayerServerId(PlayerId()) )
+    Citizen.Trace("\nRequest " .. GetPlayerName(PlayerId()) .. " - " .. GetPlayerServerId(PlayerId()) .. " - ")
 end
 
 --! DO NOT CHANGE THIS ⬇️
