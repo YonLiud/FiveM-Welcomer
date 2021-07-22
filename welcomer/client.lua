@@ -1,7 +1,7 @@
 --! DO NOT CHANGE THIS ⬇️
 -- For Debugging
 RegisterCommand('welcomer', function(source) --? RUN `/WELCOMER` TO SEE THE MESSAGE AGAIN
-    on_connect(source)
+    newPlayer()
 end, false)
 
 
