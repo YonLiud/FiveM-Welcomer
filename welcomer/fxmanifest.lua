@@ -3,7 +3,7 @@ games {'gta5'}
 
 author 'Yon Liud'
 description 'Greeting scripts for new players with guides and instructions'
-version 'Post Release 0.1'
+version '1.0.0'
 
 client_script "client.lua"
 
